@@ -11,3 +11,9 @@
 > curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d ' {"body": "pipo molo"} ' http://localhost:3000/laplagedigitale/messages
 
 ` {"body":"pipo molo","created_at":"2012-05-25T23:09:56+02:00","user_name":"curl/7.22.0 (x86_64-pc-linux-gnu) libcurl/7.22.0 OpenSSL/1.0.1 zlib/1.2.3.4 libidn/1.23 librtmp/2.3","uid":"4fbff524312f91673d000007"} `
+
+## try to POST a message in the "héhé" room (héhé is not a valid name and will return an HTTP 422)
+
+> curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d ' {"body": "pipo molo"} ' http://localhost:3000/héhé/messages
+
+` {"room_name":["is invalid"]} `

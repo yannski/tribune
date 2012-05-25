@@ -14,10 +14,13 @@ class MessagesController < ApplicationController
     @message.room_name = params[:room_name]
     @message.user_name = request.env["HTTP_USER_AGENT"]
 
-    @message.save!
-
     respond_to do |format|
-      format.json { render :json => @message.to_json(:only => [:body, :created_at, :user_name], :methods => [:uid]) }
+      if @message.save
+        format.json { render json: @message.to_json(:only => [:body, :created_at, :user_name], :methods => [:uid]), status: :created }
+      else
+        format.json { render json: @message.errors, status: :unprocessable_entity }
+      end
+
     end
   end
 end
