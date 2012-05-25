@@ -22,7 +22,7 @@ end
 gem 'jquery-rails'
 gem 'bson_ext'
 gem 'mongoid'
-gem 'haml'
+gem 'haml-rails'
 gem 'thin'
 
 group :development do
